@@ -19,7 +19,9 @@ namespace Autolote.BL
         public List<Productos> ObtenerProductos()
         {
 
-            listadeProductos = _contexto.Productos.ToList();
+            listadeProductos = _contexto.Productos
+                .Include("Categoria")
+                .ToList();
             return listadeProductos;
         }
 
@@ -33,9 +35,11 @@ namespace Autolote.BL
             else
             {
                 var productoExistente = _contexto.Productos.Find(producto.Id);
+
                 productoExistente.Marca = producto.Marca;
                 productoExistente.Modelo = producto.Modelo;
                 productoExistente.Precio = producto.Precio;
+                productoExistente.UrlImagen = producto.UrlImagen;
             }
             _contexto.SaveChanges();
 
@@ -43,9 +47,19 @@ namespace Autolote.BL
 
         public Productos ObtenerProducto(int id)
         {
-            var producto = _contexto.Productos.Find(id);
+            var producto = _contexto.Productos
+                .Include("Categoria").FirstOrDefault(p => p.Id == id);
 
             return producto;
         }
+
+        public void EliminarProducto(int id)
+        {
+            var producto = _contexto.Productos.Find(id);
+
+            _contexto.Productos.Remove(producto);
+            _contexto.SaveChanges();
+        }
+
     }
 }

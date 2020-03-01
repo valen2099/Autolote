@@ -16,5 +16,6 @@ namespace Autolote.BL
         }
 
         public DbSet<Productos> Productos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
     }
 }

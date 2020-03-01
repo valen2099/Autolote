@@ -9,14 +9,14 @@ namespace Autolote.WebAdmin.Controllers
 {
     public class MarcasController : Controller
     {
-
-
         MarcasBL _marcasBL;
+        CategoriasBL _categoriasBL;
 
 
         public MarcasController()
         {
             _marcasBL = new MarcasBL();
+            _categoriasBL = new CategoriasBL();
         }
 
         // GET: Marcas
@@ -32,31 +32,110 @@ namespace Autolote.WebAdmin.Controllers
         public ActionResult Crear()
         {
             var NuevaMarca = new Productos();
+            var categorias = _categoriasBL.ObtenerCategorias();
+
+            ViewBag.CategoriaId = 
+                new SelectList(categorias, "Id", "Descripcion");
 
             return View (NuevaMarca);
         }
 
 
         [HttpPost]
-        public ActionResult Crear(Productos producto)
+        public ActionResult Crear(Productos producto, HttpPostedFileBase imagen)
         {
+            if (ModelState.IsValid)
+            {
+                if (producto.CategoriaId == 0)
+                {
+                    ModelState.AddModelError("CategoriaId", "Seleccione una categoria");
+                    return View(producto);
+                }
+                if (imagen != null)
+                {
+                    producto.UrlImagen = GuardarImagen(imagen);
+                }
 
-            _marcasBL.GuardarProducto(producto);
-            return RedirectToAction("Index");
+                _marcasBL.GuardarProducto(producto);
+                return RedirectToAction("Index");
+            }
+            var categorias = _categoriasBL.ObtenerCategorias();
+
+            ViewBag.CategoriaId =
+                new SelectList(categorias, "Id", "Descripcion");
+
+            return View(producto);
+            
         }
 
         public ActionResult Editar(int id)
         {
             var producto = _marcasBL.ObtenerProducto(id);
+            var categorias = _categoriasBL.ObtenerCategorias();
+
+            ViewBag.CategoriaId =
+                new SelectList(categorias, "Id", "Descripcion", producto.CategoriaId);
+
             return View(producto);
         }
 
         [HttpPost]
 
-        public ActionResult Editar(Productos producto)
+        public ActionResult Editar(Productos producto, HttpPostedFileBase imagen)
         {
-            _marcasBL.GuardarProducto(producto);
-            return RedirectToAction("index");
+            if (ModelState.IsValid)
+            {
+                if (producto.CategoriaId == 0)
+                {
+                    ModelState.AddModelError("CategoriaId", "Seleccione una categoria");
+                    return View(producto);
+                }
+                if (imagen != null)
+                {
+                    producto.UrlImagen = GuardarImagen(imagen);
+                }
+
+                _marcasBL.GuardarProducto(producto);
+
+
+                return RedirectToAction("Index");
+            }
+            var categorias = _categoriasBL.ObtenerCategorias();
+
+            ViewBag.CategoriaId =
+                new SelectList(categorias, "Id", "Descripcion");
+
+            return View(producto);
+        }
+
+        public ActionResult Detalle(int id)
+        {
+            var producto = _marcasBL.ObtenerProducto(id);
+
+            return View(producto);
+        }
+
+        public ActionResult Eliminar(int id)
+        {
+            var producto = _marcasBL.ObtenerProducto(id);
+
+            return View(producto);
+        }
+
+        [HttpPost]
+        public ActionResult Eliminar(Productos producto)
+        {
+            _marcasBL.EliminarProducto(producto.Id);
+
+            return RedirectToAction("Index");
+        }
+
+        private string GuardarImagen(HttpPostedFileBase imagen)
+        {
+            string path = Server.MapPath("~/Imagenes/" + imagen.FileName);
+            imagen.SaveAs(path);
+
+            return "/Imagenes/" + imagen.FileName;
         }
     }
 }
