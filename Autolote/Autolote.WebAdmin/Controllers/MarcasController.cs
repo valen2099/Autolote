@@ -42,7 +42,7 @@ namespace Autolote.WebAdmin.Controllers
 
 
         [HttpPost]
-        public ActionResult Crear(Productos producto, HttpPostedFileBase imagen)
+        public ActionResult Crear(Productos producto, HttpPostedFileBase imagen, HttpPostedFileBase imagen2, HttpPostedFileBase imagen3, HttpPostedFileBase imagen4, HttpPostedFileBase imagen5)
         {
             if (ModelState.IsValid)
             {
@@ -51,11 +51,7 @@ namespace Autolote.WebAdmin.Controllers
                     ModelState.AddModelError("CategoriaId", "Seleccione una categoria");
                     return View(producto);
                 }
-                if (imagen != null)
-                {
-                    producto.UrlImagen = GuardarImagen(imagen);
-                }
-
+                Imagenes(producto, imagen, imagen2, imagen3, imagen4, imagen5);
                 _marcasBL.GuardarProducto(producto);
                 return RedirectToAction("Index");
             }
@@ -81,7 +77,7 @@ namespace Autolote.WebAdmin.Controllers
 
         [HttpPost]
 
-        public ActionResult Editar(Productos producto, HttpPostedFileBase imagen)
+        public ActionResult Editar(Productos producto, HttpPostedFileBase imagen, HttpPostedFileBase imagen2, HttpPostedFileBase imagen3, HttpPostedFileBase imagen4, HttpPostedFileBase imagen5)
         {
             if (ModelState.IsValid)
             {
@@ -90,10 +86,7 @@ namespace Autolote.WebAdmin.Controllers
                     ModelState.AddModelError("CategoriaId", "Seleccione una categoria");
                     return View(producto);
                 }
-                if (imagen != null)
-                {
-                    producto.UrlImagen = GuardarImagen(imagen);
-                }
+                Imagenes(producto, imagen, imagen2, imagen3, imagen4, imagen5);
 
                 _marcasBL.GuardarProducto(producto);
 
@@ -136,6 +129,30 @@ namespace Autolote.WebAdmin.Controllers
             imagen.SaveAs(path);
 
             return "/Imagenes/" + imagen.FileName;
+        }
+
+        public void Imagenes(Productos produc, HttpPostedFileBase i1, HttpPostedFileBase i2, HttpPostedFileBase i3, HttpPostedFileBase i4, HttpPostedFileBase i5)
+        {
+            if (i1 != null)
+            {
+                produc.UrlImagen = GuardarImagen(i1);
+            }
+            if (i2 != null)
+            {
+                produc.UrlImagen2 = GuardarImagen(i2);
+            }
+            if (i3 != null)
+            {
+                produc.UrlImagen3 = GuardarImagen(i3);
+            }
+            if (i4 != null)
+            {
+                produc.UrlImagen4 = GuardarImagen(i4);
+            }
+            if (i5 != null)
+            {
+                produc.UrlImagen5 = GuardarImagen(i5);
+            }
         }
     }
 }

@@ -31,5 +31,17 @@ namespace Autolote.BL
 
         [Display(Name = "Imagen")]
         public string UrlImagen { get; set; }
+
+        [Display(Name = "Imagen2")]
+        public string UrlImagen2 { get; set; }
+
+        [Display(Name = "Imagen3")]
+        public string UrlImagen3 { get; set; }
+
+        [Display(Name = "Imagen4")]
+        public string UrlImagen4 { get; set; }
+
+        [Display(Name = "Imagen5")]
+        public string UrlImagen5 { get; set; }
     }
 }

@@ -39,10 +39,36 @@ namespace Autolote.BL
                 productoExistente.Marca = producto.Marca;
                 productoExistente.Modelo = producto.Modelo;
                 productoExistente.Precio = producto.Precio;
-                productoExistente.UrlImagen = producto.UrlImagen;
+                GuardarImagenes(producto);
+                    
             }
             _contexto.SaveChanges();
 
+        }
+        public void GuardarImagenes(Productos producto)
+        {
+            var productoExistente = _contexto.Productos.Find(producto.Id);
+
+            if (producto.UrlImagen != null)
+            {
+                productoExistente.UrlImagen = producto.UrlImagen;
+            }
+            if (producto.UrlImagen2 != null)
+            {
+                productoExistente.UrlImagen2 = producto.UrlImagen2;
+            }
+            if (producto.UrlImagen3 != null)
+            {
+                productoExistente.UrlImagen3 = producto.UrlImagen3;
+            }
+            if (producto.UrlImagen4 != null)
+            {
+                productoExistente.UrlImagen4 = producto.UrlImagen4;
+            }
+            if (producto.UrlImagen5 != null)
+            {
+                productoExistente.UrlImagen5 = producto.UrlImagen5;
+            }
         }
 
         public Productos ObtenerProducto(int id)

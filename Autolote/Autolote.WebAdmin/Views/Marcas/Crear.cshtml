@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Productos</h4>
+        <h4>Auto</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -62,13 +62,41 @@
         </div>
 
         <div class="form-group">
+            <label class="control-label col-md-2">Seleccionar Imagen</label>
+            <div class="col-md-10">
+                <input type="file" name="imagen2" id="imagen2" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Seleccionar Imagen</label>
+            <div class="col-md-10">
+                <input type="file" name="imagen3" id="imagen3" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Seleccionar Imagen</label>
+            <div class="col-md-10">
+                <input type="file" name="imagen4" id="imagen4" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Seleccionar Imagen</label>
+            <div class="col-md-10">
+                <input type="file" name="imagen5" id="imagen5" />
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index")
 </div>
