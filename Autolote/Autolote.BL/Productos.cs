@@ -15,7 +15,7 @@ namespace Autolote.BL
         [MinLength(2, ErrorMessage ="Ingrese minimo 2 caracteres")] 
         public string Marca { get; set; }
 
-        [Required(ErrorMessage = "Ingrese la Marca")]
+        [Required(ErrorMessage = "Ingrese el Modelo")]
         [MinLength(2, ErrorMessage = "Ingrese minimo 2 caracteres")]
         public string Modelo { get; set; }
 
