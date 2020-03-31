@@ -19,7 +19,9 @@ namespace Autolote.BL
 
         public List<Categoria> ObtenerCategorias()
         {
-            ListadeCategorias = _contexto.Categorias.ToList();
+            ListadeCategorias = _contexto.Categorias
+                .OrderBy (r => r.Descripcion)
+                .ToList();
             return ListadeCategorias;
         }
 

@@ -1,46 +1,120 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE HTML>
+<!--
+    Verti by HTML5 UP
+    html5up.net | ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 <head>
+    <title>Autolote Honduras</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="~/assets/css/main.css" />
+
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Autolote", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        @Html.ActionLink("Inicio","Index","Home")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Lista de Marcas","Index","Marcas")
-                    </li>
-                </ul>
-            </div>
+<body class="is-preload homepage">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <div id="header-wrapper">
+            <header id="header" class="container">
+
+                <!-- Logo -->
+                <div id="logo">
+                    <h1><a href="/">Autolote HN</a></h1>
+                    <span>Lo mejor de Honduras</span>
+                </div>
+
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li class="current"><a href="/">Inicio</a></li>
+                        <li>
+                            <a href="#">Categorias</a>
+                            <ul>
+                                <li><a href="/Autos/Camion">Camion</a></li>
+                                <li><a href="/Autos/Camioneta">Camioneta </a></li>
+                                <li><a href="/Autos/Cuatrimoto">Cuatrimoto</a></li>                                
+                                <li><a href="/Autos/Lancha">Lancha</a></li>
+                                <li><a href="/Autos/Microbus">Microbus</a></li>
+                                <li><a href="/Autos/Moto">Moto</a></li>
+                                <li><a href="/Autos/Pickup">Pickup</a></li>
+                                <li><a href="/Autos/Turismo">Turismo</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                        <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                        <li><a href="no-sidebar.html">No Sidebar</a></li>
+                    </ul>
+                </nav>
+            </header>
         </div>
+        
+       @RenderBody()
+        <!-- Footer -->
+        <div id="footer-wrapper">
+            <footer id="footer" class="container">
+                <div class="row">
+                    <div class="col-3 col-6-medium col-12-small">
+
+                        <!-- Links -->
+                        <section class="widget links">
+                            <h3><a href="/">Inicio</a></h3>
+                            <ul class="style2">
+                                <li><a href="#">Acerca de nosotros</a></li>
+                                <li><a href="#">Contacta con nosotros</a></li>
+                                <li><a href="#">Noticias</a></li>
+                                <li><a href="#">Términos y condiciones de uso</a></li>
+                              <li><a href="#">Términos y condiciones de uso</a></li>
+                            </ul>
+                        </section>
+
+                    </div>
+                    <div class="col-6 col-6-medium col-12-small"></div>
+                    <div class="col-3 col-6-medium col-12-small">
+
+                        <!-- Contact -->
+                        <section class="widget contact last">
+                            <h3>Encuéntranos</h3>
+                            <ul>
+                                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                                <li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
+                            </ul>
+                            <p>
+                                Calle Ficticia<br />
+                                San Pedro Sula, Honduras<br />
+                                (504) 8888-0000
+                            </p>
+                        </section>
+
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-12">
+                        <div id="copyright">
+                            <ul class="menu">
+                                <li>&copy;  AutoloteHN. All rights reserved</li>
+                                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    <!-- Scripts -->
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/jquery.dropotron.min.js"></script>
+    <script src="~/assets/js/browser.min.js"></script>
+    <script src="~/assets/js/breakpoints.min.js"></script>
+    <script src="~/assets/js/util.js"></script>
+    <script src="~/assets/js/main.js"></script>
+
 </body>
 </html>
