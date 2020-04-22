@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Autolote.WebAdmin.Controllers
 {
+    [Authorize]
     public class MarcasController : Controller
     {
         MarcasBL _marcasBL;
